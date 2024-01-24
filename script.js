@@ -1,6 +1,7 @@
 var timer = 30;
 var score = 0;
 var highScore = 0;
+var highScore=localStorage.getItem('HighScore')||0;
 function randomNum() {
   var rando = Math.random() * 9;
   rando = Math.floor(rando) + 1;
@@ -80,6 +81,7 @@ function updateHighScore() {
   if (score > highScore) {
     highScore = score;
     document.querySelector("#Highscore").textContent = highScore;
+    localStorage.setItem('HighScore',highScore)
   }
 }
 function newhit() {
@@ -105,6 +107,11 @@ function clic() {
       }
     }
   });
+}
+var storedHighScore = localStorage.getItem('HighScore');
+if (storedHighScore) {
+  highScore = parseInt(storedHighScore);
+  document.querySelector("#Highscore").textContent = highScore;
 }
 makebubble();
 hitt();
