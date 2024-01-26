@@ -27,14 +27,18 @@ function makebubble() {
     var bubblesPerColumn = Math.floor(containerHeight / 60);
     
     var totalBubbles = bubblesPerRow * bubblesPerColumn;
-
+    var same=Math.floor(Math.random()*totalBubbles);
     for (var i = 0; i < totalBubbles; i++) {
         rando = randomNum();
         var create = document.createElement("div");
         create.setAttribute("class", "bubble");
         create.textContent = rando;
+        if(i==same){
+          rando=document.querySelector('#new').textContent;
+        create.textContent=rando;
+        }
         outerdiv.appendChild(create);
-    }
+      }
 }
 
 
